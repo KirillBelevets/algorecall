@@ -11,6 +11,10 @@ const structures = [
   { name: "Map", href: "/data-structures/map" },
   { name: "Tree", href: "/data-structures/tree-visualiser" },
   { name: "MinHeap", href: "/data-structures/min-heap" },
+  { name: "Deque", href: "/data-structures/deque-visualizer" },
+  { name: "LRU Cache", href: "/data-structures/lru-cache" },
+  { name: "GraphBFS", href: "/data-structures/graph-bfs" },
+  { name: "Set", href: "/data-structures/set" },
 ];
 
 export default function DataStructuresHub() {

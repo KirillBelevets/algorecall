@@ -179,82 +179,88 @@ export default function MinHeapVisualizer() {
         property. Watch the bubbling up/down in action!
       </p>
 
-      <div className="flex items-center gap-2 mb-6">
-        <input
-          type="text"
-          value={heapifyInput}
-          placeholder="Heapify: 5,1,4,8"
-          onChange={(e) => setHeapifyInput(e.target.value)}
-          className="px-3 py-1 rounded bg-gray-800 text-white border border-gray-700 w-64"
-        />
-        <button
-          onClick={handleHeapify}
-          className="bg-purple-600 hover:bg-purple-500 text-white px-4 py-1 rounded"
-        >
-          Heapify Array
-        </button>
+      <div className="flex flex-wrap gap-2 mb-6 justify-center sm:flex-row">
+        <div className="flex flex-col sm:flex-row gap-2 w-full justify-center items-center mb-4">
+          <input
+            type="text"
+            value={heapifyInput}
+            placeholder="Heapify: 5,1,4,8"
+            onChange={(e) => setHeapifyInput(e.target.value)}
+            className="w-full sm:w-auto px-3 py-2 rounded bg-gray-800 text-white border border-gray-700"
+          />
+          <button
+            onClick={handleHeapify}
+            className="w-full sm:w-40 px-4 py-2 rounded bg-purple-600 hover:bg-purple-500 text-white"
+          >
+            Heapify Array
+          </button>
+        </div>
+
+        <div className="flex flex-wrap gap-2 w-full justify-center items-center mb-6">
+          <input
+            type="number"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="w-full sm:w-40 px-3 py-2 rounded bg-gray-800 text-white border border-gray-700"
+            placeholder="Enter number"
+          />
+
+          <button
+            onClick={() => {
+              if (input) insert(parseInt(input));
+              setInput("");
+            }}
+            className="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded relative group"
+          >
+            Insert
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 z-10 bg-gray-700 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">
+              🧠 O(log n)
+            </span>
+          </button>
+
+          <button
+            onClick={extractMin}
+            className="w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded relative group"
+          >
+            Extract Min
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 z-10 bg-gray-700 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">
+              🧠 O(log n)
+            </span>
+          </button>
+
+          <button
+            onClick={peekMin}
+            className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-white px-4 py-2 rounded relative group"
+          >
+            Peek Min
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 z-10 bg-gray-700 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">
+              🧠 O(1)
+            </span>
+          </button>
+        </div>
       </div>
 
-      <div className="flex gap-2 mb-6">
-        <input
-          type="number"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="px-3 py-1 rounded bg-gray-800 text-white border border-gray-700"
-          placeholder="Enter number"
-        />
-        <button
-          onClick={() => {
-            if (input) insert(parseInt(input));
-            setInput("");
-          }}
-          className="bg-green-600 hover:bg-green-500 text-white px-4 py-1 rounded relative group"
-        >
-          Insert
-          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 z-10 bg-gray-700 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">
-            🧠 O(log n)
-          </span>
-        </button>
-        <button
-          onClick={extractMin}
-          className="bg-red-600 hover:bg-red-500 text-white px-4 py-1 rounded relative group"
-        >
-          Extract Min
-          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 z-10 bg-gray-700 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">
-            🧠 O(log n)
-          </span>
-        </button>
+      <div className="w-full overflow-x-auto">
+        <div className="flex flex-col items-center gap-4 mb-6">
+          {renderTree(0)}
+        </div>
 
-        <button
-          onClick={peekMin}
-          className="bg-yellow-500 hover:bg-yellow-400 text-white px-4 py-1 rounded relative group"
-        >
-          Peek Min
-          <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 z-10 bg-gray-700 text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">
-            🧠 O(1)
-          </span>
-        </button>
-      </div>
-
-      <div className="flex flex-col items-center gap-4 mb-6">
-        {renderTree(0)}
-      </div>
-
-      <div className="w-full max-w-2xl text-sm mb-6">
-        <h2 className="text-gray-400 mb-2 font-medium">🧮 Heap as Array</h2>
-        <div className="flex flex-wrap gap-2">
-          {heap.map((val, idx) => (
-            <div
-              key={idx}
-              className={`px-3 py-2 rounded text-center w-12 shadow ${
-                highlighted?.includes(idx)
-                  ? "bg-yellow-400 text-black"
-                  : "bg-gray-800 text-white"
-              }`}
-            >
-              {val}
-            </div>
-          ))}
+        <div className="w-full max-w-2xl text-sm mb-6">
+          <h2 className="text-gray-400 mb-2 font-medium">🧮 Heap as Array</h2>
+          <div className="flex flex-wrap gap-2">
+            {heap.map((val, idx) => (
+              <div
+                key={idx}
+                className={`px-3 py-2 rounded text-center w-12 shadow ${
+                  highlighted?.includes(idx)
+                    ? "bg-yellow-400 text-black"
+                    : "bg-gray-800 text-white"
+                }`}
+              >
+                {val}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

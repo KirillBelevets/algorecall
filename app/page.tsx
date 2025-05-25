@@ -4,7 +4,7 @@ const topics = [
   { label: "Flashcards", slug: "flashcards" },
   { label: "Quiz", slug: "quiz" },
   { label: "Topics", slug: "topics" },
-  { label: "Flashcards Sequential", slug: "flashcards/sequential" },
+  { label: "Flashcards Sequential", slug: "flashcards-sequential" },
   { label: "Data Structures", slug: "data-structures" },
 ];
 
