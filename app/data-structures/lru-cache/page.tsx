@@ -171,7 +171,7 @@ export default function LRUCacheVisualizer() {
       </div>
 
       <div className="flex gap-2 flex-wrap justify-center mb-8 transition-all">
-        {entries.map(([k, v], idx) => {
+        {entries.map(([k, v]) => {
           const isRecent = recentKey === k;
           return (
             <div
