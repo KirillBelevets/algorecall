@@ -92,7 +92,7 @@ export default function ArrayVisualizer() {
       onClick: handleShift,
       color: "yellow",
       hint: "O(n)",
-      textColor: "text-black",
+      textColor: "text-white",
     },
   ];
 
