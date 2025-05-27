@@ -19,6 +19,14 @@ export default function FlashcardTimer({
   const [progress, setProgress] = useState(100); // 100% width
   const [showAnswer, setShowAnswer] = useState(false);
 
+  const revealNow = () => {
+    setShowAnswer(true);
+    // Defer parent state update to avoid React warning
+    setTimeout(() => {
+      onReveal?.();
+    }, 0);
+  };
+
   useEffect(() => {
     if (showAnswer) return;
 
@@ -38,15 +46,7 @@ export default function FlashcardTimer({
     }, interval);
 
     return () => clearInterval(timer);
-  }, [initialTime, showAnswer]);
-
-  const revealNow = () => {
-    setShowAnswer(true);
-    // Defer parent state update to avoid React warning
-    setTimeout(() => {
-      onReveal?.();
-    }, 0);
-  };
+  }, [initialTime, showAnswer, revealNow]);
 
   return (
     <Card

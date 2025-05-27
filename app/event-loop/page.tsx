@@ -126,8 +126,8 @@ export default function EventLoopVisualizer() {
     <main className="min-h-screen bg-gray-950 text-gray-100 p-6 flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4">🔁 Event Loop Visualizer</h1>
       <p className="text-sm text-gray-400 mb-4 text-center max-w-xl">
-        Add tasks to different queues and simulate how JavaScript's event loop
-        handles them in order.
+        Add tasks to different queues and simulate how JavaScript&aposs event
+        loop handles them in order.
       </p>
 
       <section className="bg-gray-800 p-4 rounded shadow max-w-xl mb-6 text-sm text-gray-200">

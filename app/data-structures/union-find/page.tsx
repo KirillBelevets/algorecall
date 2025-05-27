@@ -31,7 +31,7 @@ export default function UnionFindVisualizer() {
     parentArr: number[]
   ): [number, number[]] => {
     if (parentArr[x] !== x) {
-      const [root, updatedArr] = findWithCompression(parentArr[x], parentArr);
+      const [root] = findWithCompression(parentArr[x], parentArr);
       parentArr[x] = root;
       return [root, parentArr];
     }
