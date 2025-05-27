@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const structures = [
   { name: "Stack", href: "/data-structures/stack" },
+  { name: "Array", href: "/data-structures/array" },
   { name: "Queue", href: "/data-structures/queue" },
   { name: "Linked List", href: "/data-structures/linked-list" },
   { name: "Binary Tree", href: "/data-structures/binary-tree" },
@@ -15,6 +16,8 @@ const structures = [
   { name: "LRU Cache", href: "/data-structures/lru-cache" },
   { name: "GraphBFS", href: "/data-structures/graph-bfs" },
   { name: "Set", href: "/data-structures/set" },
+  { name: "Bloom", href: "/data-structures/bloom" },
+  { name: "Union Find", href: "/data-structures/union-find" },
 ];
 
 export default function DataStructuresHub() {

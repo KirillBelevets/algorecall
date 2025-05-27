@@ -6,6 +6,7 @@ const topics = [
   { label: "Topics", slug: "topics" },
   { label: "Flashcards Sequential", slug: "flashcards-sequential" },
   { label: "Data Structures", slug: "data-structures" },
+  { label: "Event Loop Visualizer", slug: "event-loop" },
 ];
 
 export default function Home() {
