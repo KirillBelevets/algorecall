@@ -26,7 +26,7 @@ export default function ArrayVisualizer() {
     setArray((prev) => [...prev, val]);
     setLog((prev) => [`push(${val})`, ...prev]);
     setInput("");
-    setHighlightIndex(array.length); // last index
+    setHighlightIndex(array.length);
     clearHighlightAfterDelay();
   };
 
@@ -35,13 +35,11 @@ export default function ArrayVisualizer() {
     const removed = array[array.length - 1];
     setArray((prev) => prev.slice(0, -1));
     setLog((prev) => [`pop() → ${removed}`, ...prev]);
-    setHighlightIndex(array.length - 1);
+    setHighlightIndex(array.length - 2);
     clearHighlightAfterDelay();
   };
 
   const handleUnshift = () => {
-    console.log("CLike");
-
     const val = parseInt(input);
     if (isNaN(val)) return;
     setArray((prev) => [val, ...prev]);
@@ -52,8 +50,6 @@ export default function ArrayVisualizer() {
   };
 
   const handleShift = () => {
-    console.log("CLike2");
-
     if (array.length === 0) return;
     const removed = array[0];
     setArray((prev) => prev.slice(1));
